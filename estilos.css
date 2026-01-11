@@ -4,7 +4,7 @@ body {
   background: #f2f2f2;
   color: #333;
   margin: 0;
-  padding: 1.5rem 1rem 90px; /* deja sitio al footer fijo */
+  padding: 1.5rem 1rem 90px;
 }
 
 /* === Títulos === */
@@ -15,7 +15,7 @@ h1, h2 {
 }
 
 h1 {
-  background-color: #335497; /* azul marino Classlife */
+  background-color: #335497;
   color: #fff;
   font-size: 1.8rem;
   padding: 1rem 1.2rem;
@@ -33,17 +33,16 @@ h2 {
   margin-top: 0.5rem;
 }
 
-/* === Botonera (semestres) === */
+/* === Botonera === */
 .botonera {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 0.6rem;
-  flex-wrap: nowrap; /* no apilar si cabe */
+  flex-wrap: nowrap;
   margin: 1.2rem auto 2rem;
 }
 
-/* Base de botones */
 .botonera button {
   padding: 1rem 1.6rem;
   font-weight: 700;
@@ -57,16 +56,16 @@ h2 {
   min-width: 160px;
 }
 
-/* Colores por semestre (por orden: botón 1 = SUP1, botón 2 = SUP2) */
+/* SUP1 / SUP2 por orden */
 .botonera button:nth-child(1) {
-  background-color: #a3c86d; /* verde */
+  background-color: #a3c86d;
 }
 .botonera button:nth-child(1):hover {
   background-color: #91b85a;
 }
 
 .botonera button:nth-child(2) {
-  background-color: #fe7857; /* coral */
+  background-color: #fe7857;
 }
 .botonera button:nth-child(2):hover {
   background-color: #e45b3e;
@@ -76,7 +75,6 @@ h2 {
   transform: translateY(-2px);
 }
 
-/* Si en algún momento deshabilitas botones */
 .botonera button:disabled {
   opacity: 0.6;
   cursor: default;
@@ -84,7 +82,7 @@ h2 {
   box-shadow: none;
 }
 
-/* === Estado cargando === */
+/* === Cargando === */
 #cargando {
   text-align: center;
   margin: 2rem auto;
@@ -93,12 +91,11 @@ h2 {
   color: #335497;
 }
 
-/* === Contenedor principal de audiciones === */
+/* === Contenedores === */
 .audiciones-grid {
   padding: 0 1rem;
 }
 
-/* Contenedor en columna (lo crea el JS) */
 .audiciones-columna {
   display: flex;
   flex-direction: column;
@@ -107,7 +104,7 @@ h2 {
   margin: 1.5rem auto 0;
 }
 
-/* Caja de audición */
+/* Caja */
 .audicion-caja {
   background-color: #ffffff;
   border: 1px solid #e2e2e2;
@@ -120,7 +117,7 @@ h2 {
   gap: 0.6rem;
 }
 
-/* Botones de audición y soluciones */
+/* Botones */
 .boton-audicion,
 .boton-solucion,
 #mostrar-soluciones {
@@ -135,38 +132,40 @@ h2 {
   color: #fff;
 }
 
-/* Botón audición (base) */
 .boton-audicion {
-  background-color: #10bbce; /* cian Classlife */
+  background-color: #10bbce;
 }
 .boton-audicion:hover {
   background-color: #0a9bab;
   transform: translateY(-1px);
 }
 
-/* Estados play/pause (SIN duplicados) */
 .boton-audicion.activo {
-  background-color: #2ecc71; /* verde vivo */
+  background-color: #2ecc71;
 }
 .boton-audicion.pausado {
-  background-color: #f39c12; /* naranja */
+  background-color: #f39c12;
 }
 .boton-audicion.activo:hover,
 .boton-audicion.pausado:hover {
   filter: brightness(0.95);
 }
 
-/* Botón "Soluciones" */
+/* Botón Soluciones centrado */
 #mostrar-soluciones,
 .boton-solucion {
-  background-color: #8e44ad; /* púrpura Classlife */
+  background-color: #8e44ad;
+  display: block;
+  margin: 1.5rem auto 0;
 }
+
 #mostrar-soluciones:hover:enabled,
 .boton-solucion:hover:enabled {
   background-color: #7a3796;
   transform: translateY(-1px);
   box-shadow: 0 2px 6px rgba(0,0,0,0.12);
 }
+
 #mostrar-soluciones:disabled,
 .boton-solucion:disabled {
   background-color: #aaa;
@@ -176,7 +175,7 @@ h2 {
   box-shadow: none;
 }
 
-/* === Selector de solución === */
+/* Selector */
 .selector-solucion {
   width: 100%;
   max-width: 520px;
@@ -197,18 +196,11 @@ h2 {
   box-shadow: 0 0 0 3px rgba(51, 84, 151, 0.15);
 }
 
-.selector-solucion option:first-child {
-  text-align: center;
-  color: #888;
-}
-
-/* Disabled (tras "Soluciones") */
 .selector-solucion:disabled {
   opacity: 0.85;
   cursor: default;
 }
 
-/* Correcto / Incorrecto */
 .correcto {
   background-color: #d4edda;
   color: #155724;
@@ -221,7 +213,7 @@ h2 {
   border-color: #efb7be;
 }
 
-/* === Mensaje final === */
+/* Mensaje final */
 .mensaje-final {
   margin: 1.5rem auto 0;
   padding: 1rem 1.2rem;
@@ -231,7 +223,11 @@ h2 {
   max-width: 600px;
   text-align: center;
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-  border: 1px solid rgba(0,0,0,0.06);
+}
+
+/* Oculto mientras esté vacío */
+.mensaje-final:empty {
+  display: none;
 }
 
 .mensaje-final.exito {
@@ -254,12 +250,12 @@ h2 {
   color: #721c24;
 }
 
-/* === Pie de página === */
+/* Footer */
 .footer {
   position: fixed;
   bottom: 0;
   width: 100%;
-  background-color: #335497; /* azul marino */
+  background-color: #335497;
   color: white;
   text-align: center;
   padding: 0.7rem 1rem;
@@ -289,10 +285,9 @@ h2 {
   font-weight: 700;
 }
 
-/* === Adaptación móvil === */
+/* Móvil */
 @media (max-width: 600px) {
   body {
-    margin: 0;
     padding: 1rem 0.8rem 90px;
   }
 
@@ -302,17 +297,13 @@ h2 {
   }
 
   .botonera {
-    flex-wrap: wrap; /* en móvil sí puede apilar */
+    flex-wrap: wrap;
   }
 
   .botonera button {
     min-width: 140px;
     width: 100%;
     max-width: 320px;
-  }
-
-  .audiciones-columna {
-    padding: 0;
   }
 
   .selector-solucion {
