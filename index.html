@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <link rel="icon" href="https://bustena.wordpress.com/wp-content/uploads/2023/02/cropped-icon-piano.png" type="image/png">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simulador de examen</title>
+  <link rel="stylesheet" href="estilos.css">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+</head>
+<body>
+  <h1>Simulador de examen</h1>
+    <h2>Historia de la Música 1</h2>
+    <div class="botonera">
+      <button onclick="loadCSV('H1tr1')">1er trimestre</button>
+      <button onclick="loadCSV('H1tr2')">2º trimestre</button>
+      <button onclick="loadCSV('H1tr3')">3er trimestre</button>
+    </div>
+    
+    <h2>Historia de la Música 2</h2>
+    <div class="botonera">
+      <button onclick="loadCSV('H2tr1')">1er trimestre</button>
+      <button onclick="loadCSV('H2tr2')">2º trimestre</button>
+      <button onclick="loadCSV('H2tr3')">3er trimestre</button>
+    </div>
+  <div id="cargando" style="display: none;">Cargando...</div>
+  <div id="audiciones" class="audiciones-grid"></div>
+
+  <script src="script.js"></script>
+  <footer class="footer">
+  <a href="https://bustena.wordpress.com/" target="_blank">
+    <img src="https://bustena.wordpress.com/wp-content/uploads/2023/02/cropped-icon-piano.png?w=200" alt="Icono" class="footer-icon">
+    <span class="footer-title">HISTORIA DE LA MÚSICA</span>
+  </a>
+</footer>
+</body>
+</html>
