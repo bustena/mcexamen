@@ -1,0 +1,321 @@
+/* === Estilo general (inspirado en Classlife) === */
+body {
+  font-family: "Segoe UI", sans-serif;
+  background: #f2f2f2;
+  color: #333;
+  margin: 0;
+  padding: 1.5rem 1rem 90px; /* deja sitio al footer fijo */
+}
+
+/* === Títulos === */
+h1, h2 {
+  text-align: center;
+  font-weight: 700;
+  margin: 1rem auto;
+}
+
+h1 {
+  background-color: #335497; /* azul marino Classlife */
+  color: #fff;
+  font-size: 1.8rem;
+  padding: 1rem 1.2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 600px;
+  margin: 1.5rem auto 1rem;
+}
+
+h2 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+  margin-top: 0.5rem;
+}
+
+/* === Botonera (semestres) === */
+.botonera {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: nowrap; /* no apilar si cabe */
+  margin: 1.2rem auto 2rem;
+}
+
+/* Base de botones */
+.botonera button {
+  padding: 1rem 1.6rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  color: #fff;
+  min-width: 160px;
+}
+
+/* Colores por semestre (por orden: botón 1 = SUP1, botón 2 = SUP2) */
+.botonera button:nth-child(1) {
+  background-color: #a3c86d; /* verde */
+}
+.botonera button:nth-child(1):hover {
+  background-color: #91b85a;
+}
+
+.botonera button:nth-child(2) {
+  background-color: #fe7857; /* coral */
+}
+.botonera button:nth-child(2):hover {
+  background-color: #e45b3e;
+}
+
+.botonera button:hover {
+  transform: translateY(-2px);
+}
+
+/* Si en algún momento deshabilitas botones */
+.botonera button:disabled {
+  opacity: 0.6;
+  cursor: default;
+  transform: none;
+  box-shadow: none;
+}
+
+/* === Estado cargando === */
+#cargando {
+  text-align: center;
+  margin: 2rem auto;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #335497;
+}
+
+/* === Contenedor principal de audiciones === */
+.audiciones-grid {
+  padding: 0 1rem;
+}
+
+/* Contenedor en columna (lo crea el JS) */
+.audiciones-columna {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  max-width: 600px;
+  margin: 1.5rem auto 0;
+}
+
+/* Caja de audición */
+.audicion-caja {
+  background-color: #ffffff;
+  border: 1px solid #e2e2e2;
+  border-radius: 12px;
+  padding: 1.2rem 1.2rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+/* Botones de audición y soluciones */
+.boton-audicion,
+.boton-solucion,
+#mostrar-soluciones {
+  border: none;
+  border-radius: 10px;
+  padding: 0.7rem 1.2rem;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease;
+  min-width: 200px;
+  color: #fff;
+}
+
+/* Botón audición (base) */
+.boton-audicion {
+  background-color: #10bbce; /* cian Classlife */
+}
+.boton-audicion:hover {
+  background-color: #0a9bab;
+  transform: translateY(-1px);
+}
+
+/* Estados play/pause (SIN duplicados) */
+.boton-audicion.activo {
+  background-color: #2ecc71; /* verde vivo */
+}
+.boton-audicion.pausado {
+  background-color: #f39c12; /* naranja */
+}
+.boton-audicion.activo:hover,
+.boton-audicion.pausado:hover {
+  filter: brightness(0.95);
+}
+
+/* Botón "Soluciones" */
+#mostrar-soluciones,
+.boton-solucion {
+  background-color: #8e44ad; /* púrpura Classlife */
+}
+#mostrar-soluciones:hover:enabled,
+.boton-solucion:hover:enabled {
+  background-color: #7a3796;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+}
+#mostrar-soluciones:disabled,
+.boton-solucion:disabled {
+  background-color: #aaa;
+  cursor: default;
+  opacity: 0.7;
+  transform: none;
+  box-shadow: none;
+}
+
+/* === Selector de solución === */
+.selector-solucion {
+  width: 100%;
+  max-width: 520px;
+  padding: 0.55rem 0.8rem;
+  font-size: 0.95rem;
+  border: 1px solid #cfcfcf;
+  border-radius: 10px;
+  background-color: #fff;
+  color: #333;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+}
+
+.selector-solucion:focus {
+  outline: none;
+  border-color: #335497;
+  box-shadow: 0 0 0 3px rgba(51, 84, 151, 0.15);
+}
+
+.selector-solucion option:first-child {
+  text-align: center;
+  color: #888;
+}
+
+/* Disabled (tras "Soluciones") */
+.selector-solucion:disabled {
+  opacity: 0.85;
+  cursor: default;
+}
+
+/* Correcto / Incorrecto */
+.correcto {
+  background-color: #d4edda;
+  color: #155724;
+  border-color: #b7e0c0;
+}
+
+.incorrecto {
+  background-color: #f8d7da;
+  color: #721c24;
+  border-color: #efb7be;
+}
+
+/* === Mensaje final === */
+.mensaje-final {
+  margin: 1.5rem auto 0;
+  padding: 1rem 1.2rem;
+  font-size: 1.05rem;
+  font-weight: 800;
+  border-radius: 12px;
+  max-width: 600px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  border: 1px solid rgba(0,0,0,0.06);
+}
+
+.mensaje-final.exito {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.mensaje-final.bien {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.mensaje-final.medio {
+  background-color: #e2e3e5;
+  color: #383d41;
+}
+
+.mensaje-final.bajo {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+/* === Pie de página === */
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #335497; /* azul marino */
+  color: white;
+  text-align: center;
+  padding: 0.7rem 1rem;
+  box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.12);
+  font-family: "Segoe UI", sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  z-index: 100;
+}
+
+.footer a {
+  color: white;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.footer-icon {
+  height: 24px;
+  width: 24px;
+}
+
+.footer-title {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+/* === Adaptación móvil === */
+@media (max-width: 600px) {
+  body {
+    margin: 0;
+    padding: 1rem 0.8rem 90px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+    padding: 0.9rem 1rem;
+  }
+
+  .botonera {
+    flex-wrap: wrap; /* en móvil sí puede apilar */
+  }
+
+  .botonera button {
+    min-width: 140px;
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .audiciones-columna {
+    padding: 0;
+  }
+
+  .selector-solucion {
+    max-width: 100%;
+  }
+}
